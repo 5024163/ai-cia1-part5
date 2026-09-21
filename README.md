@@ -163,15 +163,25 @@ No external library, database or path-finding library is used.
 
 The project is divided into three parts. Each part has one job.
 
-```mermaid
-flowchart TD
-  A["1. Screen<br/>Grid, buttons and results (Swing panels)"]
-  B["2. Controller<br/>SimulationController: keeps the app state and runs the animation"]
-  C["3. Algorithms<br/>Standard A*, Optimized A*, Manhattan distance"]
-  A -->|"user clicks"| B
-  B -->|"map, start, goal"| C
-  C -->|"path, explored cells, counts"| B
-  B -->|"colours, robot position, metrics"| A
+```+--------------------------------------------------------------+
+| 1. SCREEN      (astar.ui)                                    |
+| Grid, buttons and results (Swing panels)                     |
++--------------------------------------------------------------+
+        |                           ^
+        | user clicks               | colours, robot position, metrics
+        v                           |
++--------------------------------------------------------------+
+| 2. CONTROLLER  (astar.controller)                            |
+| SimulationController: keeps the app state and                |
+| runs the animation                                           |
++--------------------------------------------------------------+
+        |                           ^
+        | map, start, goal          | path, explored cells, counts
+        v                           |
++--------------------------------------------------------------+
+| 3. ALGORITHMS  (astar.algorithm)                             |
+| Standard A*, Optimized A*, Manhattan distance                |
++--------------------------------------------------------------+
 ```
 
 **The three parts**
